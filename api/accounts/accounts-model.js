@@ -8,6 +8,8 @@ const getAll = () => {
 
 const getById = id => {
   // DO YOUR MAGIC
+  const shipper = db('accounts').where('id', id)
+  return shipper
 }
 
 const create = account => {

@@ -2,15 +2,19 @@ const router = require('express').Router();
 const Accounts = require('./accounts-model');
 
 router.get('/', (req, res, next) => {
-  // DO YOUR MAGIC
   Accounts.getAll()
           .then(accounts => {
             res.json(accounts)
           })
+          .catch(next);
 })
 
 router.get('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
+  Accounts.getById(req.params.id)
+          .then(account => {
+            res.json(account)
+          })
+          .catch(next)
 })
 
 router.post('/', (req, res, next) => {
@@ -26,7 +30,9 @@ router.delete('/:id', (req, res, next) => {
 })
 
 router.use((err, req, res, next) => { // eslint-disable-line
-  // DO YOUR MAGIC
+  res.status(500).json({
+    message: 'something went wrong in accounts router'
+  })
 })
 
 module.exports = router;
