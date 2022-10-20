@@ -6,14 +6,15 @@ const getAll = () => {
   return results
 }
 
-const getById = id => {
-  // DO YOUR MAGIC
-  const shipper = db('accounts').where('id', id)
+const getById = async id => {
+  const [shipper] = await db('accounts').where('id', id)
   return shipper
 }
 
-const create = account => {
-  // DO YOUR MAGIC
+const create = async account => {
+  const [accountId] = await db('accounts').insert(account)
+  const result = getById(accountId)
+  return result
 }
 
 const updateById = (id, account) => {
