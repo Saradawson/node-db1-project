@@ -1,7 +1,10 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
 router.get('/', (req, res, next) => {
   // DO YOUR MAGIC
+  res.json({
+    message: 'getting accounts'
+  })
 })
 
 router.get('/:id', (req, res, next) => {
