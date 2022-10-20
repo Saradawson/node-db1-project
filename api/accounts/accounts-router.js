@@ -1,10 +1,12 @@
 const router = require('express').Router();
+const Accounts = require('./accounts-model');
 
 router.get('/', (req, res, next) => {
   // DO YOUR MAGIC
-  res.json({
-    message: 'getting accounts'
-  })
+  Accounts.getAll()
+          .then(accounts => {
+            res.json(accounts)
+          })
 })
 
 router.get('/:id', (req, res, next) => {
