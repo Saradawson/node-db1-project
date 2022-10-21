@@ -25,6 +25,8 @@ exports.checkAccountPayload = (req, res, next) => {
     res.status(400).json({
       message: 'budget of account is too large or too small'
     })
+  }else{
+    next()
   }
   }
 
