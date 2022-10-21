@@ -25,6 +25,7 @@ router.post(
   (req, res, next) => {
   Accounts.create(req.body)
           .then(account => {
+            account.name = account.name.trim()
             res.status(201).json(account)
           })
           .catch(next)
