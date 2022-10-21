@@ -22,11 +22,10 @@ router.post(
   '/',
   md.checkAccountPayload,
   md.checkAccountNameUnique,
-  async (req, res, next) => {
-  // DO YOUR MAGIC
+  (req, res, next) => {
   Accounts.create(req.body)
           .then(account => {
-            res.json(account)
+            res.status(201).json(account)
           })
           .catch(next)
 })
