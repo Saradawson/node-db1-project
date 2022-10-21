@@ -22,7 +22,7 @@ exports.checkAccountPayload = (req, res, next) => {
     res.status(400).json({
       message: 'budget of account must be a number'
     })
-  }else if (budget < 0 || budget > 100000000){
+  }else if (budget < 0 || budget > 1000000){
     res.status(400).json({
       message: 'budget of account is too large or too small'
     })
