@@ -37,7 +37,11 @@ router.put(
   md.checkAccountPayload,
   md.checkAccountNameUnique,
   (req, res, next) => {
-  // DO YOUR MAGIC
+  Accounts.updateById(req.params.id, req.body)
+          .then(account => {
+            res.json(account)
+          })
+          .catch(next)
 });
 
 router.delete('/:id', md.checkAccountId, (req, res, next) => {
